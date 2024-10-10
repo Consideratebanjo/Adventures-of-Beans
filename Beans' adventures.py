@@ -5,7 +5,7 @@ import random as rand  #allows dice rolls
 #========= defining subroutines
 #rolls a die of author-declared faces
 def roll(die):
-    return(rand.randint(die))
+    return(rand.randint(1,die))
 
 #class for an entity/thing; player, monster, etc
 class Entity:
@@ -22,7 +22,7 @@ class Entity:
         self.cha = charisma
 
     # Takes an entity's statistic and a "difficulty class", allowing for a declared modifier, rolls a die (20-sided by default, but changeable) and allows for advantage/disadvantage
-    def skillcheck(stat,dc,modifier=0,die=20,adv=0):
+    def skillcheck(self,stat,dc,modifier=0,die=20,adv=0):
         modifier += (stat-10) // 2  #Converts an entity's stat into a modifier, and adds it to the declared modifier
         dieroll = roll(die) #rolls the first die
 
@@ -37,11 +37,11 @@ class Entity:
                 dieroll2 = roll(die) #roll another die
             if (dieroll2<dieroll): # compare the two rolls, and take whichever die is higher
                     dieroll = dieroll2
-                i+1
+
         else: #if no advantage or disadvantage,
             pass #continue without rolling any additional dice
 
-        score = (roll+modifier) #adds modifier to the used die roll into a score
+        score = (dieroll+modifier) #adds modifier to the used die roll into a score
 
         #if score meets or exceeds the difficulty, return "success" to indicate the entity passes the skill check. Otherwise, indicates the entity fails the check by returning "Failure"
         if (score >= dc): 
@@ -51,5 +51,6 @@ class Entity:
 
 #========== main code body/process
 
-character = Entity('Beans')
-print(Beans.skillcheck(12,2))
+if __name__ == "__main__":
+    player = Entity("Beans")
+    print(player.skillcheck(12,2))
