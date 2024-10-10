@@ -8,7 +8,7 @@ class entity:
     
     #creates an entity with average statistics -- skillcheck modifiers will be 0 by default
     def __init__(self, name, strength=10, dexterity=10, constitution=10, intelligence=10, wisdom=10, charisma=10):
-        # a name and the 6 core stats used in most dnd-esque systems -- this will hopefully change in future, allowin author to declare their own stats
+        # a name and the 6 core stats used in most dnd-esque systems -- this will hopefully change in future, allowing authors to declare their own stats
         self.name = name
         self.str = strength
         self.dex = dexterity
