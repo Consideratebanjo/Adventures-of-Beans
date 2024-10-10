@@ -10,21 +10,27 @@ class entity:
         self.wis = wisdom
         self.cha = charisma
 
-    def skillcheck(skill,dc,die=20,adv=0):
-        modifier = skill // 2
+    def skillcheck(skill,dc,modifier=0,die=20,adv=0):
+        modifier += (skill-10) // 2
         roll = rand.randint(0,die)
 
-        match adv:
-            case (adv<0):
-                for i in adv:
-                    roll2 = rand.randint(0,die)
-                    if (roll2>roll):
-                        roll = roll2
-                    i+1
-            case (adv<0):
-                for i in adv:
-                    roll2 = rand.randint(0,die)
-                    if (roll2<roll):
-                        roll = roll2
-                    i+1
+        if (adv>0):
+            for i in adv:
+                roll2 = rand.randint(0,die)
+                if (roll2>roll):
+                    roll = roll2
+                i+1
+        elif (adv<0):
+            for i in (adv*-1):
+                roll2 = rand.randint(0,die)
+                
+        if (roll2<roll):
+                    roll = roll2
+                i+1
+        else:
+            pass 
+        if (roll < dc):
+            return("Fail")
+        else:
+            return("Success")
                 
