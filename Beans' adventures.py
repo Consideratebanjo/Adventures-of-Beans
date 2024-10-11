@@ -2,13 +2,14 @@
 
 import random as rand  #allows dice rolls
 
-#========= defining subroutines
-#rolls a die of author-declared faces
-def roll(die):
+
+#========= defining subroutines & classes
+
+def roll(die):  #rolls a die of author-declared faces
     return(rand.randint(1,die))
 
-#class for an entity/thing; player, monster, etc
-class Entity:
+class Entity:  #class for an entity/thing; player, monster, etc
+
     
     #creates an entity with (by default) average statistics -- skillcheck modifiers will be 0 by default
     def __init__(self, name, strength=10, dexterity=10, constitution=10, intelligence=10, wisdom=10, charisma=10):
@@ -49,8 +50,10 @@ class Entity:
         else:
             return("Failure")
 
-#========== main code body/process
 
-if __name__ == "__main__":
-    player = Entity("Beans")
-    print(player.skillcheck(12,2))
+#========== Placeholder or WIP testing
+
+next = "Start" #placeholder variable
+path = f"Story/{next}.txt"
+file = open(path)
+print(file.read())
