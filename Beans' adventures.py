@@ -5,7 +5,7 @@ import random as rand  #allows dice rolls
 
 #========= defining subroutines & classes
 
-def roll(die):  #rolls a die of author-declared faces
+def roll(die=20):  #rolls a die of author-declared faces, or 20 by default
     return(rand.randint(1,die))
 
 class Entity:  #class for an entity/thing; player, monster, etc
@@ -27,16 +27,15 @@ class Entity:  #class for an entity/thing; player, monster, etc
         modifier += (stat-10) // 2  #Converts an entity's stat into a modifier, and adds it to the declared modifier
         dieroll = roll(die) #rolls the first die
 
-        if (adv>0): #if entity makes the check with x advantage,
-            for i in adv: #per x,
+        if (adv>0): #if entity makes the check with advantage,
+            for i in adv: #per level of advantage,
                 dieroll2 = roll(die) #roll another die,
                 if (dieroll2>dieroll):  #compare the two rolls, and take whichever die is higher
                     dieroll = dieroll2
-                i+1
         elif (adv<0): # if entity makes check with disadvantage,
-            for i in (adv*-1): #per disadvantage,
+            for i in (adv*-1): #per level of disadvantage,
                 dieroll2 = roll(die) #roll another die
-            if (dieroll2<dieroll): # compare the two rolls, and take whichever die is higher
+            if (dieroll2<dieroll): # compare the two rolls, and take whichever is higher
                     dieroll = dieroll2
 
         else: #if no advantage or disadvantage,
@@ -55,5 +54,22 @@ class Entity:  #class for an entity/thing; player, monster, etc
 
 next = "Start" #placeholder variable
 path = f"Story/{next}.txt"
-file = open(path)
-print(file.read())
+
+
+while True:
+    file = open(path)
+    print(file.read())
+    foundchoices=False
+    while (foundchoices==False):
+        choicesline=1
+        if (file.readline(-choicesline) == "*ENDSTORY*"):
+            foundchoices=True
+        else:
+            choicesline+=1
+
+    nextchoice = int(input(print("make your selection:")))
+    for i in choicesline:
+        choice = file.readline(-i)
+        for g in length(choice):
+            if (file.readline(-i)[g] == nextchoice):
+                next = (f"{file.readline(-i)[g]}"-f"{-i}: ")
