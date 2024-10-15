@@ -51,25 +51,58 @@ class Entity:  #class for an entity/thing; player, monster, etc
 
 
 #========== Placeholder or WIP testing
-
-next = "Start" #placeholder variable
-path = f"Story/{next}.txt"
-
+Choices = {}
+next = "Start" #next page to open
 
 while True:
-    file = open(path)
-    print(file.read())
-    foundchoices=False
-    while (foundchoices==False):
-        choicesline=1
-        if (file.readline(-choicesline) == "*ENDSTORY*"):
-            foundchoices=True
-        else:
-            choicesline+=1
+    Choices.clear()
+    path = f"Story/{next}.txt"
+    count = 0
+    choicesstart = 0
 
-    nextchoice = int(input(print("make your selection:")))
-    for i in choicesline:
-        choice = file.readline(-i)
-        for g in length(choice):
-            if (file.readline(-i)[g] == nextchoice):
-                next = (f"{file.readline(-i)[g]}"-f"{-i}: ")
+    with open(path) as file:
+        reading = True
+        story = True
+        choosing = False
+
+        while (reading == True):
+
+            for line in file:
+                line = line.removesuffix("\n")
+
+                if (story == True):
+                    if (line == "*ENDSTORY*"):
+                        choicesstart = count
+                        print("Do you:\n")
+                        story = False
+                        choosing = True
+                    else:
+                        print(line)
+
+                elif (choosing == True):
+
+                    if (line != ("*ENDCHOICE*")):
+                        line = line.replace(" ", "").split(":")
+
+                        if (line != "\n" or ""):
+
+                            print(line, "test")
+                            try:
+                                Choices[line[0]] = line[1]
+                            except:
+                                pass
+
+                    else:
+                        reading = False
+                        
+                    
+        nextchoice = str(input())
+        for i in Choices:
+
+            if (Choices[i,0] == (nextchoice)):
+                next = i.removeprefix(f"{nextchoice}: ")
+                
+                    
+
+
+

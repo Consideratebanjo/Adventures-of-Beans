@@ -7,3 +7,5 @@ To test something else, go to branch2 by inputting 2
 
 1: branch1
 2: branch2
+
+*ENDCHOICE*
