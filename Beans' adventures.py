@@ -5,7 +5,7 @@ import random as rand  #allows dice rolls
 
 #========= defining subroutines & classes
 
-def roll(die=20):  #rolls a die of author-declared faces, or 20 by default
+def roll(die):  #rolls a die of author-declared faces
     return(rand.randint(1,die))
 
 class Entity:  #class for an entity/thing; player, monster, etc
@@ -27,15 +27,16 @@ class Entity:  #class for an entity/thing; player, monster, etc
         modifier += (stat-10) // 2  #Converts an entity's stat into a modifier, and adds it to the declared modifier
         dieroll = roll(die) #rolls the first die
 
-        if (adv>0): #if entity makes the check with advantage,
-            for i in adv: #per level of advantage,
+        if (adv>0): #if entity makes the check with x advantage,
+            for i in adv: #per x,
                 dieroll2 = roll(die) #roll another die,
                 if (dieroll2>dieroll):  #compare the two rolls, and take whichever die is higher
                     dieroll = dieroll2
+                i+1
         elif (adv<0): # if entity makes check with disadvantage,
-            for i in (adv*-1): #per level of disadvantage,
+            for i in (adv*-1): #per disadvantage,
                 dieroll2 = roll(die) #roll another die
-            if (dieroll2<dieroll): # compare the two rolls, and take whichever is higher
+            if (dieroll2<dieroll): # compare the two rolls, and take whichever die is higher
                     dieroll = dieroll2
 
         else: #if no advantage or disadvantage,
@@ -51,11 +52,15 @@ class Entity:  #class for an entity/thing; player, monster, etc
 
 
 #========== Placeholder or WIP testing
+
+next = "Start" #placeholder variable
+path = f"Story/{next}.txt"
+file = open(path)
+print(file.read())
 Choices = {}
 next = "Start" #next page to open
 
 while True:
-    Choices.clear()
     path = f"Story/{next}.txt"
     count = 0
     choicesstart = 0
@@ -66,6 +71,7 @@ while True:
         choosing = False
 
         while (reading == True):
+            Choices.clear()
 
             for line in file:
                 line = line.removesuffix("\n")
@@ -83,24 +89,19 @@ while True:
 
                     if (line != ("*ENDCHOICE*")):
                         line = line.replace(" ", "").split(":")
-
-                        if (line != "\n" or ""):
-
-                            print(line, "test")
-                            try:
-                                Choices[line[0]] = line[1]
-                            except:
-                                pass
+                        if (len(line) == 2 ):
+                            Choices[line[0]] = line[1]
 
                     else:
+                        print(Choices)
                         reading = False
                         
                     
         nextchoice = str(input())
         for i in Choices:
-
-            if (Choices[i,0] == (nextchoice)):
-                next = i.removeprefix(f"{nextchoice}: ")
+            if (i == nextchoice):
+                next = Choices[i]
+        print("\n=============================\n")
                 
                     
 
