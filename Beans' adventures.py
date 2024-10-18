@@ -56,14 +56,14 @@ class Entity:  #class for an entity/thing; player, monster, etc
 next = "Start" #placeholder variable
 path = f"Story/{next}.txt"
 file = open(path)
-print(file.read())
 Choices = {}
 next = "Start" #next page to open
 
 while True:
     path = f"Story/{next}.txt"
     count = 0
-    choicesstart = 0
+    Choices.clear()
+
 
     with open(path) as file:
         reading = True
@@ -71,14 +71,12 @@ while True:
         choosing = False
 
         while (reading == True):
-            Choices.clear()
 
             for line in file:
                 line = line.removesuffix("\n")
 
                 if (story == True):
                     if (line == "*ENDSTORY*"):
-                        choicesstart = count
                         print("Do you:\n")
                         story = False
                         choosing = True
@@ -87,21 +85,21 @@ while True:
 
                 elif (choosing == True):
 
-                    if (line != ("*ENDCHOICE*")):
+                    if (line == "*ENDCHOICE*"):
+                        print(Choices)
+                        reading = False
+
+                    else:
                         line = line.replace(" ", "").split(":")
                         if (len(line) == 2 ):
                             Choices[line[0]] = line[1]
-
-                    else:
-                        print(Choices)
-                        reading = False
                         
                     
-        nextchoice = str(input())
-        for i in Choices:
-            if (i == nextchoice):
-                next = Choices[i]
-        print("\n=============================\n")
+    nextchoice = str(input())
+    for i in Choices:
+        if (i == nextchoice):
+            next = Choices[i]
+    print("\n=============================\n")
                 
                     
 
