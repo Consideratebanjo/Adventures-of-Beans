@@ -1,0 +1,22 @@
+The program will read from a page until it sees a line that reads ONLY {*ENDSTORY*} (not including curly brackets.) Feel free to open any .txt document seperately to check. 
+
+Once it hits the endstory line, it will begin recording choices. You can have as many choices as you like, but they must be formatted in a specific way:
+
+- Each different choice must be on a new line (choices spanning multiple lines are read as one line, as long as you don't press the enter key midway)
+- Each choice must have a user-input choice (eg. "1" and "2" are used throughtout this tutorial) which can be anything, but it's probably best it be kept simple.
+- Each choice must have the name of a .txt document -- THE PROGRAM CAN ONLY READ .txt DOCUMENTS -- and this name must not include the ".txt": see choice formatting throughout the tutorial for examples.
+- Document name searching is case-sensitive. To see this, try capitalising "chapters" in this page's choices, navigate away & back here, then try navigating there. (The program will crash, because no error-handling has been built in yet -- this will be improved in future updates)
+- Pages can be buried as deep into subchapters as you like, but the choice must point the program through the maze -- see the output & formatting of this page's choices, and take a look at the document it points to, in the "Example_subchapter" folder.
+
+All documents must end in ".txt". If you've written the page in a wr3iter like libreoffice writer or microsoft word, in theory you should simply be able to "rename" them and change the ".docx" (or similiar) to ".txt".
+
+
+To return to the start page, input 1.
+To see a page in a subchapter, input sub. (case-sensitive)
+ 
+*ENDSTORY*
+
+1: Start
+sub: Example_subchapter/example_subchapter_page
+
+*ENDCHOICE*

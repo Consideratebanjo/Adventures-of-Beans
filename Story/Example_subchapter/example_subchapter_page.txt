@@ -1,0 +1,18 @@
+This is a page in a subchapter!
+Try opening the "formatting.txt" file elsewhere (from your file explorer) to see how the choice pointed here.
+For subchapters/subchapter pages, the choice pointer must be {/subchapter(/...)/file} (not including the curly brackets) not including the ".txt", with the "(/...)" signifying you must walk the program through each subfolder.
+
+To return to the tutorial start, input 1.
+To read about chapters, input 2.
+To return to the formatting page, input 3.
+
+However, for some reason the choices are not being presented for traveling from this page. More testing required.
+Until fixed, ideally just don't use subchapters, and/or if you're able to asctertain what's going wrong, feel free to make a pull request. If you know what's going wrong in more detail but aren't techy, please contact me, either on github (Consideratebanjo) or by email (aleppleton@gmail.com)
+
+*ENDSTORY*
+
+1: Start
+2: chapters
+3: formatting
+
+*ENDCHOICES*

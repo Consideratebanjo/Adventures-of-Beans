@@ -1,11 +1,15 @@
-This is a placeholder document, for use in testing.
+Tutorial for authors:
+this build is barebones, and can't do very much compared to my plans for this project.
+All it can do is read to the user, present choices, and look for those choices' corresponding documents. 
+Run the program yourself for an example of the output and compare to the formatting in these documents.
+The .py file must be placed in the same folder as the "Story" folder, and will always first open "Start" in the "Story" folder (all file & folder searching is case-sensitive)
 
-To test something, go to branch1 by inputting 1
-To test something else, go to branch2 by inputting 2
+To read about a method of chapter structure, press 1.
+To read about document formatting, press 2.
 
 *ENDSTORY*
 
-1: branch1
-2: branch2
+1: chapters
+2: formatting
 
 *ENDCHOICE*

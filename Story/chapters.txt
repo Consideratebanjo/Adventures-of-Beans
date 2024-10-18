@@ -1,0 +1,13 @@
+This is a page. It is part of the "Story" chapter (output to make this clearer is planned in further updates)
+You can put other pages and chapters into folders, and even subfolders for subchapters, but it requires some specific formatting (see the formatting page for more info)
+You can have as many pages, chapters, and subchapters as you like -- in theory, the program is very lightweight, only opening one file/page at a time, and closing the file as soon as a new page is selected.
+
+To go back to the first page, input 1.
+To learn more about formatting, input 2.
+
+*ENDSTORY*
+
+1: Start
+2: formatting
+
+*ENDCHOICE*
