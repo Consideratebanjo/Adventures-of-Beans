@@ -1,1 +1,8 @@
 This is branch2
+
+*ENDSTORY*
+
+1: Start
+2: branch1
+
+*ENDCHOICE*

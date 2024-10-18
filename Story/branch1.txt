@@ -1,1 +1,10 @@
-This is branch1
+This is branch1.
+To return to the start, input 1.
+To check out branch2, input 2.
+
+*ENDSTORY*
+
+1: Start
+2: branch2
+
+*ENDCHOICE*

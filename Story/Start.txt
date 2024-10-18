@@ -3,9 +3,9 @@ This is a placeholder document, for use in testing.
 To test something, go to branch1 by inputting 1
 To test something else, go to branch2 by inputting 2
 
-ENDSTORY
+*ENDSTORY*
 
 1: branch1
 2: branch2
 
-ENDCHOICE
+*ENDCHOICE*
